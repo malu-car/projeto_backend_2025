@@ -7,11 +7,12 @@
     <meta name="author" content="Quarto Periodo SI">
 
     <title>Cadastro de Pedido</title>
-
+     <link rel="stylesheet" href="../styles/root.css">
+     <link rel="stylesheet" href="../styles/index.css">
   </head>
   <body>
     <?php
-      include_once('conecta.php');
+      require_once(__DIR__ . '/../conecta.php');
       if(isset($_GET['opcao']))
       {
         if($_GET['opcao']=='e')
@@ -42,12 +43,13 @@
         }
       }
     ?>
-   <h1 class=>Cadastrar Pedido</h1>
-      <div >
-        <form action="pedidos.php" method="POST">
+  <main class="main">
+   <h1 class='title'>Cadastrar Pedido</h1>
+      <div>
+        <form class="form" action="pedidos.php" method="POST">
          <div>
           <label for="cliente">Cliente</label>
-            <select class="form-control" name="cliente" id="cliente">
+            <select class="input" name="cliente" id="cliente">
 
               <?php
                $sql = "select * from cliente";
@@ -63,7 +65,7 @@
             </select>
           <div>
             <label for="canal_venda">Canal de Venda</label>
-              <select class="form-control" name="canal_venda" id="canal_venda">
+              <select class="input" name="canal_venda" id="canal_venda">
                 <?php
                   $opcoes = array('Ecommerce','Comissario','Bilheteria');
                   foreach($opcoes as $op) {
@@ -74,7 +76,7 @@
             </select>
           <div>
             <label for="setor">Setor</label>
-              <select class="form-control" name="setor" id="setor">
+              <select class="input" name="setor" id="setor">
                 <?php
                   $sql = "select * from setor";
                   $resultado = mysqli_query($bancodedados,$sql);
@@ -89,7 +91,7 @@
               </select>
             <div>
               <label for="lote">Lote</label>
-                <select class="form-control" name="lote" id="lote">
+                <select class="input" name="lote" id="lote">
                   <?php
                     $sql = "select * from lote";
                     $resultado = mysqli_query($bancodedados,$sql);
@@ -105,27 +107,27 @@
             </div>
             <div>
               <label for="quantidade">Quantidade</label>
-                <input required value="<?php if(isset($quantidade)) echo $quantidade;?>" type="text" class="form-control" id="quantidade" name="quantidade" placeholder="Somente numeros" size="60">
+                <input class="input" required value="<?php if(isset($quantidade)) echo $quantidade;?>" type="text" id="quantidade" name="quantidade" placeholder="Somente numeros" size="60">
             </div>
             <div>
-              <label for="valor_bruto">Valor Bruto</label>
-                <input required value="<?php if(isset($valor_bruto)) echo $valor_bruto; ?>"  class="form-control" id="valor_bruto" name="valor_bruto" size="60"> 
+              <label  for="valor_bruto">Valor Bruto</label>
+                <input class="input" required value="<?php if(isset($valor_bruto)) echo $valor_bruto; ?>" type="text" id="valor_bruto" name="valor_bruto" size="60"> 
             </div>
             <div>
               <label for="taxa">Taxa</label>
-              <input required value="<?php if(isset($taxa)) echo $taxa; ?>"  class="form-control" id="taxa" name="taxa" size="60"> 
+              <input class="input" required value="<?php if(isset($taxa)) echo $taxa; ?>" type="text" id="taxa" name="taxa" size="60"> 
             </div>
             <div>
               <label for="desconto">Desconto</label>
-                <input required value="<?php if(isset($desconto)) echo $desconto; ?>"  class="form-control" id="desconto" name="desconto" size="60"> 
+                <input class="input" required value="<?php if(isset($desconto)) echo $desconto; ?>" type="text" id="desconto" name="desconto" size="60"> 
             </div>
             <div>
               <label for="total_liquido">Total Liquido</label>
-                <input required value="<?php if(isset($total_liquido)) echo $total_liquido; ?>"  class="form-control" id="total_liquido" name="total_liquido" size="60"> 
+                <input class="input" required value="<?php if(isset($total_liquido)) echo $total_liquido; ?>" type="text" id="total_liquido" name="total_liquido" size="60"> 
             </div>
             <div>
               <label for="status">Status</label>
-                <select class="form-control" name="status" id="status">
+                <select  class="input" name="status" id="status">
                   <option>Pendente</option>
                   <option>Aprovado</option>
                   <option>Recusado</option>
@@ -135,7 +137,7 @@
             </div>
             <div>
               <label for="prazo_expiracao">Data de expiração</label>
-                <input type="date" class="form-control" name="prazo_expiracao" id="prazo_expiracao">
+                <input class="input" type="date" name="prazo_expiracao" id="prazo_expiracao">
                 </input>
 
             <?php
@@ -149,7 +151,7 @@
           </div>
         
             <br>
-            <input type="submit" value="Gravar">
+            <input class="button" type="submit" value="Gravar">
       </form>
     </div>
     <div>
@@ -198,7 +200,7 @@
   <div>    
     <h2 class="display-6"> Pedidos Cadastrados</h2>
   </div>
-  <div >
+  <div class="table-responsive">
     <table>
       <tr>
         <th>Cliente</th>
@@ -239,6 +241,7 @@
       ?>
     </table>
   </div>        
+</main>
 </div>
 </body>
 </html>

@@ -7,12 +7,14 @@
     <meta name="author" content="Quarto Periodo SI">
 
     <title>Cadastro de Clientes</title>
+     <link rel="stylesheet" href="../styles/root.css">
+     <link rel="stylesheet" href="../styles/index.css">
 
   </head>
   <body>
 
     <?php
-      include_once('conecta.php');
+      require_once(__DIR__ . '/../conecta.php');
       if(isset($_GET['opcao']))
       {
         if($_GET['opcao']=='e')
@@ -36,24 +38,25 @@
         }
       }
     ?>
-   <h1 class=>Cadastro de Usuário</h1>
-        <div >
+   <main class="main">
+   <h1 class='title'>Cadastro de Usuário</h1>
+        <div>
           <form class="form" action="clientes.php" method="POST">
             <div>
               <label for="nome">Nome</label>
-                <input required value="<?php if(isset($nome)) echo $nome;?>" type="text" class="form-control" id="nome" name="nome" placeholder="Informe o nome do cliente" size="60">
+                <input class="input" required value="<?php if(isset($nome)) echo $nome;?>" type="text" id="nome" name="nome" placeholder="Informe o nome do cliente" size="60">
             </div>
             <div>
               <label for="documento">CPF</label>
-                <input required value="<?php if(isset($documento)) echo $documento; ?>"  class="form-control" id="documento" name="documento" placeholder="Somente numeros" size="60"> 
+                <input class="input" required value="<?php if(isset($documento)) echo $documento; ?>" type="text" id="documento" name="documento" placeholder="Somente numeros" size="60"> 
             </div>
             <div class="form-group">
               <label for="contato">Telefone</label>
-                <input required value="<?php if(isset($contato)) echo $contato; ?>"  class="form-control" id="contato" name="contato" placeholder="Somente numeros" size="60"> 
+                <input class="input" required value="<?php if(isset($contato)) echo $contato; ?>" type="text" id="contato" name="contato" placeholder="Somente numeros" size="60"> 
             </div>
             <div>
               <label for="consentimento_id">Aceita os termos de cadastratos?</label>
-                <input type="checkbox"  name="consentimento_id" id="consentimento_id" value = "1">Aceito</input>
+                <input class="check" type="checkbox" name="consentimento_id" id="consentimento_id" value="1"> Aceito
 
                 <?php
                   if(isset($_GET['opcao']) && $_GET['opcao']=='a')
@@ -65,7 +68,7 @@
                 ?>
             </div>
             <br>
-            <input type="submit" value="Gravar">
+            <input class="button" type="submit" value="Gravar">
           </form>
         </div>
 
@@ -126,6 +129,7 @@
 
           </table>
         </div>        
+  </main>
   </div>
   </body>
 </html>
