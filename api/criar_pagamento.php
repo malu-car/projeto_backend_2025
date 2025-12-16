@@ -23,15 +23,15 @@ if ($lote_id <= 0 || $quantidade <= 0) {
 }
 
 try {
-    
+   
     MercadoPagoConfig::setAccessToken(
         'APP_USR-3871915922687609-121614-8d2abda2b85d71e57eb8ed2d56aa5aec-3067578484'
     );
 
-    
+   
     $db = (new Conexao())->getConexao();
 
-    
+   
     $stmt = $db->prepare("SELECT preco FROM lote WHERE id = ?");
     $stmt->execute([$lote_id]);
     $lote = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -46,7 +46,7 @@ try {
    
     $client = new PreferenceClient();
 
-    
+   
 
     $preference = $client->create([
         "items" => [
@@ -56,7 +56,7 @@ try {
                 "unit_price" => $preco_unitario
             ]
         ],
-        "external_reference" => uniqid('pedido_'), 
+        "external_reference" => uniqid('pedido_'),
 
         "back_urls" => [
             "success" => "http://localhost/projeto_backend_2025/pages/sucesso.php",
