@@ -9,9 +9,17 @@
     <title>Cadastro de Clientes</title>
      <link rel="stylesheet" href="../styles/root.css">
      <link rel="stylesheet" href="../styles/index.css">
+     <link rel="stylesheet" href="../styles/navbar.css">
+      <link rel="stylesheet" href="../styles/lista.css">
 
   </head>
   <body>
+      <div class="navbar"> 
+      <a href="../index.html">Inicio</a> 
+      <a href="novo_pedido.php">Novo Pedido</a> 
+      <a href="todos_pedidos.php">Todos os Pedidos</a>
+      <a href="clientes_cadastrados.php">Clientes Cadastrados</a>
+    </div>
 
     <?php
       require_once(__DIR__ . '/../conecta.php');
@@ -38,10 +46,11 @@
         }
       }
     ?>
+
    <main class="main">
-   <h1 class='title'>Cadastro de Usuário</h1>
+   <h1 class='title'>Cadastro de Cliente</h1>
         <div>
-          <form class="form" action="clientes.php" method="POST">
+          <form class="form" action="cadastro_clientes.php" method="POST">
             <div>
               <label for="nome">Nome</label>
                 <input class="input" required value="<?php if(isset($nome)) echo $nome;?>" type="text" id="nome" name="nome" placeholder="Informe o nome do cliente" size="60">
@@ -84,8 +93,11 @@
               $contato = $_POST['contato'];
               $consentimento = isset($_POST['consentimento_id']) ? $_POST['consentimento_id'] : '0';
               $sql = "update cliente set nome='$nome', documento = '$documento', contato = '$contato', consentimento='$consentimento' where id = $id";
-              mysqli_query($bancodedados,$sql);
-
+              if(mysqli_query($bancodedados,$sql))
+              {
+                header('Location: clientes_cadastrados.php');
+                exit();
+              }
             }
             else {
               $nome = $_POST['nome'];
@@ -93,43 +105,12 @@
               $contato = $_POST['contato'];
               $consentimento = isset($_POST['consentimento_id']) ? $_POST['consentimento_id'] : '0';
               $sql = "insert into cliente (nome,documento,contato,consentimento) values ('$nome','$documento','$contato','$consentimento')";
-              mysqli_query($bancodedados,$sql);  
+              if(mysqli_query($bancodedados,$sql))
+              {
+                header('Location: clientes_cadastrados.php');
+                exit();
+              }
             }
           }
         ?>
-
-        <div>
-          <h2> Clientes Cadastrados</h2>
         </div>
-        <div >
-          <table>
-            <tr>
-              <th>Nome</th>
-              <th>CPF</th>
-              <th>Contato</th>
-              <th>Consentimento</th>
-              <th class="tdmenor">Excluir</th>
-      		    <th class="tdmenor">Editar</th>
-            </tr>
-
-          <?php
-            $sql = "select id,nome,documento,contato,consentimento from cliente;";
-            $resultado = mysqli_query($bancodedados,$sql);
-            while($linha = mysqli_fetch_array($resultado))
-            {
-              echo "<tr><td>".$linha['nome']."</td>";
-              echo "<td>".$linha['documento']."</td>";
-              echo "<td>".$linha['contato']."</td>";
-              echo "<td>".$linha['consentimento']."</td>";
-              echo "<td><a href='clientes.php?opcao=e&id=".$linha['id']."'>Excluir</a></td>";
-              echo "<td><a href='clientes.php?opcao=a&id=".$linha['id']."'>Editar</a></td></tr>";
-
-            }
-          ?>
-
-          </table>
-        </div>        
-  </main>
-  </div>
-  </body>
-</html>
