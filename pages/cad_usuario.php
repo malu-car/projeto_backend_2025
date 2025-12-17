@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <form method="post" class="form">
     <label>Nome:</label><br>
-    <input type="text" name="nome" required class="input" placeholder="BATATA"><br><br>
+    <input type="text" name="nome" required class="input" placeholder="Digite o seu nome"><br><br>
 
     <label>Perfil:</label><br>
     <select name="perfil" required>

@@ -27,12 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h2 class="title">Cadastro de Organização</h2>
 
-<form method="post">
+<form method="post" class="form">
     <label>Nome da Organização:</label><br>
     <input type="text" name="nome" required><br><br>
 
     <label>Contato:</label><br>
     <input type="text" name="contato"><br><br>
 
-    <button type="submit">Cadastrar</button>
+    <button type="submit" class="button">Cadastrar</button>
 </form>

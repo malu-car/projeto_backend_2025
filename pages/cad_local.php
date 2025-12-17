@@ -31,15 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h2 class="title">Cadastro de Local</h2>
 
-<form method="post">
-    <label>Nome do Local:</label><br>
-    <input type="text" name="nome" required><br><br>
+<form method="post" class="form">
+    <label>Nome do Local:</label>
+    <input type="text" name="nome" required class="input" placeholder="Digite o local do evento"><br><br>
 
     <label>Endereço:</label><br>
-    <input type="text" name="endereco" required><br><br>
+    <input type="text" name="endereco" required class="input" placeholder="Digite o endereço"><br><br>
 
     <label>Capacidade:</label><br>
-    <input type="number" name="capacidade" required><br><br>
+    <input type="number" name="capacidade" required class="input" placeholder="Digite a capacidade"><br><br>
 
     <label>Organização:</label><br>
     <select name="organizacao_id" required>
@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ?>
     </select><br><br>
 
-    <button type="submit">Cadastrar</button>
+    <button type="submit" class="button">Cadastrar</button>
 </form>
 
 <br>
