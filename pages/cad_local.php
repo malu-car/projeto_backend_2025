@@ -55,4 +55,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </form>
 
 <br>
-<a href="lista_local.php">Ver locais cadastrados</a>
+<a href="lista_usuario.php" class="link">Ver locais cadastrados</a>
