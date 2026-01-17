@@ -1,5 +1,5 @@
 <?php
-include_once('conecta.php');
+include_once('../../conecta.php');
 
 // Recupera os valores enviados pelo formulário
 $relatorio_escolhido = $_POST['relatorios_id'];
