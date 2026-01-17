@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once('conecta.php');
+include_once('../../conecta.php');
 
 $codigo = $_POST['codigo'];
 $total = 100.00; // mesmo valor da compra
