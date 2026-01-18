@@ -19,7 +19,7 @@
 
   <body>
     <?php
-      include_once('conecta.php');
+      include_once('../../conecta.php');
 
       if(isset($_GET['opcao']))
       {
