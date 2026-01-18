@@ -53,7 +53,7 @@ session_start();
       </div>
     </header>-->
     <?php
-    include_once('conecta.php');
+    require_once(__DIR__ . '/../../conecta.php');
     ?>
     <body>
       <div class="main">
