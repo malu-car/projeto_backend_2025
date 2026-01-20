@@ -64,7 +64,7 @@
 		</div>
 
 		<div class="table-responsive">
-			<p>Bem-vindo, Nome</p> <!-- pegar sessao_start() em auth.php -->
+			<p style="font-weight: bold; padding-left: 1.6rem">Bem-vindo!</p>
 			<table>
 				<thead>
 				<tr>
